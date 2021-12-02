@@ -1,81 +1,53 @@
-#include "shell.h"
+#include "monty.h"
 
-/**
- * _cd - function to implement change directory
- * @args: command arguements
- *
- * Return: 1 on success
- */
-int _cd(char **args)
+void _push(stack_t **stack, unsigned int line_number)
 {
-	if (args[1] == NULL)
-	{
-		write(2, "lsh: expected argument to \"cd\"\n", 31);
-	}
-	else
-	{
-		if (chdir(args[1]) != 0)
-		{
-			perror("lsh");
-		}
-	}
-
-	/*free(args);*/
-	return (1);
+	printf("push function\n");
+	return;
 }
 
-/**
- * _help - to display shell usage
- * now it is hard coded, but as we progress, we will be reading
- * from a file
- * @args: command to be executed
- *
- * Return: Int
- */
-int _help(__attribute__((unused)) char **args)
+void _pop(stack_t **stack, unsigned int line_number)
 {
-	write(1, "Joseph & Washington shell\n", 26);
-	write(1, "Type program names and arguments, and hit enter.\n", 49);
-	write(1, "The following are built in:\n", 28);
-	write(1, "* cd\n", 5);
-	write(1, "* help\n", 7);
-	write(1, "* exit\n", 7);
-	write(1, "\nUse the man command for information on other programs.\n", 57);
-
-	/*free(args);*/
-	return (1);
+	printf("pop function\n"); 
+	return;
 }
 
-/**
- * _exitprog - The  function that would exit the program
- * @args: The command entered
- *
- * Return: 0 on success
- */
-int _exitprog(char **args)
+void _pall(stack_t **stack, unsigned int line_number)
 {
-	free(args);
-	exit(0);
-	return (0);
+	printf("print all\n");
+	return;
 }
 
-/**
- * print_env - Prints the current environment
- * @argv: Command "env"
- *
- * Return: Nothing
- */
-int print_env(__attribute__((unused)) char **argv)
+void _swap(stack_t **stack, unsigned int line_number)
 {
-	/*extern char **environ;*/
-	int i = 0;
+	return;
+}
 
-	while (environ[i] != NULL)
-	{
-		write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
-		write(STDOUT_FILENO, "\n", 1);
-		i++;
-	}
-	/*free(argv);*/
-	return (0);
+void _add(stack_t **stack, unsigned int line_number)
+{
+	return;
+}
+
+void _nop(stack_t **stack, unsigned int line_number)
+{
+	return;
+}
+
+void _sub(stack_t **stack, unsigned int line_number)
+{
+	return;
+}
+
+void _mul(stack_t **stack, unsigned int line_number)
+{
+	return;
+}
+
+void _mod(stack_t **stack, unsigned int line_number)
+{
+	return;
+}
+void _pint(stack_t **stack, unsigned int line_number)
+{
+        return;
 }

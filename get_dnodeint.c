@@ -1,4 +1,4 @@
-#include "lists.h"
+#include "monty.h"
 
 /**
  * get_dnodeint_at_index - a function that returns the nth node of
@@ -8,7 +8,7 @@
  * @index: the index to return
  * Return: Node data at index, if the node does not exist, return NULL
  */
-stack_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
+stack_t *get_dnodeint_at_index(stack_t *head, unsigned int index)
 {
 	stack_t *h;
 	unsigned int count = 0;

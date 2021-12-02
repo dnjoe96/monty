@@ -1,4 +1,4 @@
-#include "lists.h"
+#include "monty.h"
 
 /**
  * free_dlistint - a function that frees a stack_t list.

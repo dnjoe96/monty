@@ -8,6 +8,7 @@ int main(int argc, char **argv)
     ssize_t read;
     char **arr;
     int i;
+    stack_t *stacklist;
 
     if (argc != 2)
     {
@@ -18,12 +19,15 @@ int main(int argc, char **argv)
     fp = fopen(argv[1], "r");
     if (fp == NULL)
         exit(EXIT_FAILURE);
+	
+    stacklist = malloc(sizeof(stack_t));
 
     while ((read = getline(&line, &len, fp)) != -1) {
         /* printf("Retrieved line of length %zu:\n", read);
         printf("%s", line);
 	*/
 	arr = _strtok(line, " \t");
+	d_function(arr, &stacklist);
 
 	for (i = 0; arr[i] != NULL; i++)
 	{

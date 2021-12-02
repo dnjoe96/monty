@@ -43,12 +43,26 @@ typedef struct instruction_s
 char **_strtok(char *str, const char *delim);
 size_t print_dlistint(const stack_t *h);
 size_t dlistint_len(const stack_t *h);
-stack_t *add_dnodeint(dlistint_t **head, const int n);
-stack_t *add_dnodeint_end(dlistint_t **head, const int n);
+stack_t *add_dnodeint(stack_t **head, const int n);
+stack_t *add_dnodeint_end(stack_t **head, const int n);
 void free_dlistint(stack_t *head);
-stack_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index);
+stack_t *get_dnodeint_at_index(stack_t *head, unsigned int index);
 int sum_dlistint(stack_t *head);
-stack_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n);
+stack_t *insert_dnodeint_at_index(stack_t **h, unsigned int idx, int n);
 int delete_dnodeint_at_index(stack_t **head, unsigned int index);
+
+/* entry function */
+int d_function(char **argv, stack_t **stack);
+
+/* monty opcode */
+void _push(stack_t **stack, unsigned int line_number);
+void _pop(stack_t **stack, unsigned int line_number);
+void _pint(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int line_number);
+void _add(stack_t **stack, unsigned int line_number);
+void _sub(stack_t **stack, unsigned int line_number);
+void _mul(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void _mod(stack_t **stack, unsigned int line_number);
 
 #endif

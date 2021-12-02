@@ -1,4 +1,4 @@
-#include "lists.h"
+#include "monty.h"
 
 /**
  * insert_dnodeint_at_index - a function that inserts a new node at a
@@ -9,7 +9,7 @@
  * @n: data to add
  * Return: Pointer of the new node
  */
-stack_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
+stack_t *insert_dnodeint_at_index(stack_t **h, unsigned int idx, int n)
 {
 	stack_t *head;
 	stack_t *new;

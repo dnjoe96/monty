@@ -1,4 +1,4 @@
-#include "lists.h"
+#include "monty.h"
 
 /**
  * add_dnodeint - a function that adds a new node at the beginning of
@@ -8,7 +8,7 @@
  * @n: data to add
  * Return: Address of the new element
  */
-stack_t *add_dnodeint(dlistint_t **head, const int n)
+stack_t *add_dnodeint(stack_t **head, const int n)
 {
 	stack_t *new;
 

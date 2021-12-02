@@ -1,4 +1,4 @@
-#include "lists.h"
+#include "monty.h"
 
 /**
  * sum_dlistint -  a function that returns the sum of all the
