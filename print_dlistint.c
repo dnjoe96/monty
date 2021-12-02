@@ -14,10 +14,16 @@ size_t print_dlistint(const stack_t *h)
 
 	head = h;
 
+	while (head->next != NULL)
+        {
+                head = head->next;
+                count++;
+        }
+
 	while (head != NULL)
 	{
 		printf("%d\n", head->n);
-		head = head->next;
+		head = head->prev;
 		count++;
 	}
 	return (count);

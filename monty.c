@@ -1,43 +1,57 @@
 #include "monty.h"
-//char **_strtok(char *str, const char *delim)
+
 int main(int argc, char **argv)
 {
     FILE *fp;
     char *line = NULL;
     size_t len = 0;
-    ssize_t read;
     char **arr;
     int i;
     stack_t *stacklist;
 
     if (argc != 2)
     {
-	    printf("something went wrong\n");
-	  return (0);
+	    fprintf(stderr, "USAGE: monty file\n");
+	    exit(EXIT_FAILURE);
     }
 
     fp = fopen(argv[1], "r");
     if (fp == NULL)
-        exit(EXIT_FAILURE);
+    {
+	    fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+	    exit(EXIT_FAILURE);
+    }
 	
     stacklist = malloc(sizeof(stack_t));
-
-    while ((read = getline(&line, &len, fp)) != -1) {
-        /* printf("Retrieved line of length %zu:\n", read);
-        printf("%s", line);
-	*/
-	arr = _strtok(line, " \t");
-	d_function(arr, &stacklist);
-
-	for (i = 0; arr[i] != NULL; i++)
-	{
-		printf("%s ", arr[i]);
-	}
-	printf("\n");
+    if (stacklist == NULL)
+    {
+	    fprintf(stderr, "Error: malloc failed\n");
+	    exit(EXIT_FAILURE);
     }
+	i = 0;
+    while (getline(&line, &len, fp) != -1)
+    {
+		i++;
+	
+		arr = _strtok(line, " \t\n\b");
 
-    fclose(fp);
-    if (line)
-        free(line);
-    exit(EXIT_SUCCESS);
+		if (arr == NULL && arr[0][0] == '#')
+			continue;
+		
+		d_function(arr, &stacklist, i);
+		/*printf("%s\n", arr[0]);*/
+	
+		/*for (i = 0; arr[i] != NULL; i++)
+		{
+			printf("%d - %s, ", i, arr[i]);
+		}
+		printf("\n");
+		*/
+	}
+    	free_dlistint(stacklist);
+
+    	fclose(fp);
+    	if (line)
+        	free(line);
+    	exit(EXIT_SUCCESS);
 }
