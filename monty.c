@@ -30,12 +30,7 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	stacklist = malloc(sizeof(stack_t));
-	if (stacklist == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
+	stacklist = NULL;
 
 	i = 0;
 
@@ -58,11 +53,14 @@ int main(int argc, char **argv)
 		}
 		printf("\n");
 		*/
+		free(arr);
 	}
 
-	free_dlistint(stacklist);
+	if (stacklist)
+		free_dlistint(stacklist);
 
 	fclose(fp);
+	
 	if (line)
 		free(line);
 
