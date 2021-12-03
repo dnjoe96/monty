@@ -1,16 +1,23 @@
 #include "monty.h"
 
+/**
+ * arr_len - get length of null ending array
+ *
+ * @arr: array of arrays
+ * Return: length
+ */
 int arr_len(char **arr)
 {
 	int len = 0;
 
 	while (*(arr + len) != NULL)
 		len++;
-	
+
 	return (len);
 }
 
-int d_function(char **argv, stack_t **stack, __attribute__((unused)) unsigned int line)
+int d_function(char **argv, stack_t **stack,
+		__attribute__((unused)) unsigned int line)
 {
 	int i, n = 10;
 	unsigned int val;
