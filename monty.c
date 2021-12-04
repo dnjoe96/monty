@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 
 		arr = _strtok(line, " \t\n\b");
 
-		if (arr == NULL && arr[0][0] == '#')
+		if (arr == NULL || arr[0][0] == '#')
 			continue;
 
 		d_function(arr, &stacklist, i);
