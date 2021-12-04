@@ -9,7 +9,7 @@
  */
 void _push(stack_t **stack, unsigned int line_number)
 {
-	printf("push %u on stack\n", line_number);
+	/*printf("push %u on stack\n", line_number);*/
 	add_dnodeint_end(stack, line_number);
 }
 
@@ -24,7 +24,7 @@ void _pop(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	size_t len;
 
-	printf("pop function\n");
+	/*printf("pop function\n");*/
 	len = dlistint_len(*stack);
 
 	if (len == 0)
@@ -44,7 +44,7 @@ void _pop(stack_t **stack, __attribute__((unused)) unsigned int line_number)
  */
 void _pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
-	printf("print all\n");
+	/*printf("print all\n");*/
 	print_dlistint(*stack);
 }
 
@@ -61,7 +61,7 @@ void _swap(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	stack_t *node;
 	int val;
 
-	printf("swap top\n");
+	/*printf("swap top\n");*/
 	len = dlistint_len(*stack);
 
 	node = get_dnodeint_at_index(*stack, len - 2);
@@ -83,7 +83,7 @@ void _add(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	stack_t *node1, *node2;
 	size_t len;
 
-	printf("add\n");
+	/*printf("add\n");*/
 	len = dlistint_len(*stack);
 
 	node1 = get_dnodeint_at_index(*stack, len - 1);
@@ -116,7 +116,7 @@ void _sub(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	stack_t *node1, *node2;
 	size_t len;
 
-	printf("add\n");
+	/*printf("add\n");*/
 	len = dlistint_len(*stack);
 
 	node1 = get_dnodeint_at_index(*stack, len - 1);
@@ -137,7 +137,7 @@ void _mul(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	stack_t *node1, *node2;
 	size_t len;
 
-	printf("add\n");
+	/*printf("add\n");*/
 	len = dlistint_len(*stack);
 
 	node1 = get_dnodeint_at_index(*stack, len - 1);
@@ -158,7 +158,7 @@ void _div(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	stack_t *node1, *node2;
 	size_t len;
 
-	printf("add\n");
+	/*printf("add\n");*/
 	len = dlistint_len(*stack);
 
 	node1 = get_dnodeint_at_index(*stack, len - 1);
@@ -186,7 +186,7 @@ void _pint(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	size_t len;
 	stack_t *node;
 
-	printf("print top\n");
+	/*printf("print top\n");*/
 	len = dlistint_len(*stack);
 	node = get_dnodeint_at_index(*stack, len - 1);
 	fprintf(stdout, "%u\n", node->n);
