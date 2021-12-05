@@ -26,7 +26,7 @@ int arr_len(char **arr)
  */
 int d_function(char **argv, stack_t **stack, unsigned int line)
 {
-	int i, n = 10;
+	int i, n = 11;
 
 	instruction_t instruct[] = {
 		{"pop", _pop},
@@ -39,6 +39,7 @@ int d_function(char **argv, stack_t **stack, unsigned int line)
 		{"mul", _mul},
 		{"div", _div},
 		{"mod", _mod},
+		{"pchar", _pchar},
 	};
 
 	/*printf("Line number = %u\n", line);*/
