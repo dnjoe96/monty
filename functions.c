@@ -303,3 +303,29 @@ void _pint(stack_t **stack, unsigned int line_number)
 	node = get_dnodeint_at_index(*stack, len - 1);
 	fprintf(stdout, "%u\n", node->n);
 }
+
+/**
+ * _pchar - print the last data on the stack as char
+ *
+ * @stack: pointer to the head node of doubly linked list
+ * @line_number: data
+ * Return: void
+ */
+void _pchar(stack_t **stack, unsigned int line_number)
+{
+        size_t len;
+        stack_t *node;
+
+        /*printf("print top\n");*/
+        len = dlistint_len(*stack);
+
+        if (len == 0)
+                d_exit(stack, "can't pchar, stack empty", line_number);
+
+        node = get_dnodeint_at_index(*stack, len - 1);
+
+	if (node->n > 255 || node->n < 0)
+		d_exit(stack, "can't pchar, value out of range", line_number);
+
+        fprintf(stdout, "%c\n", node->n);
+}

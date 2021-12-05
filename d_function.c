@@ -1,63 +1,37 @@
 #include "monty.h"
 
-/**
- * arr_len - get length of null ending array
- *
- * @arr: array of arrays
- * Return: length
- */
-int arr_len(char **arr)
+int d_function(char **argv, stack_t **stack)
 {
-	int len = 0;
-
-	while (*(arr + len) != NULL)
-		len++;
-
-	return (len);
-}
-
-/**
- * d_function - The function that assigns opcodes to its various functions
- *
- * @argv: arguments
- * @stack: pointer to head of list
- * @line: Line number
- * Return: Int
- */
-int d_function(char **argv, stack_t **stack, unsigned int line)
-{
-	int i, n = 10;
+	int i;
+	unsigned int val;
 
 	instruction_t instruct[] = {
+		{"push", _push},
 		{"pop", _pop},
 		{"pint", _pint},
 		{"pall", _pall},
-		{"swap", _swap},
-		{"add", _add},
-		{"nop", _nop},
-		{"sub", _sub},
-		{"mul", _mul},
-		{"div", _div},
-		{"mod", _mod},
 	};
 
-	/*printf("Line number = %u\n", line);*/
-	for (i = 0; i < n; i++)
+	for (i = 0; i < 4; i++)
 	{
 		if (strcmp(argv[0], instruct[i].opcode) == 0)
 		{
-			/*printf("val = %u\n",val);*/
-			free(argv);
-			instruct[i].f(stack, line);
-			return (0);
+
+			if (argv[1] == NULL)
+				val = 0;
+			else
+				val = (unsigned int) atoi(argv[i]);
+
+			instruct[i].f(stack, val);
+			break;
 		}
 
-		if (strcmp(argv[0], "push") == 0)
+		if (i == 3)
 		{
-			_push(stack, line, argv);
-			return (0);
+			if (argv[0] == "#")
+			{
+				break;
+			}
 		}
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", line, argv[0]);
-	return (0);
 }
