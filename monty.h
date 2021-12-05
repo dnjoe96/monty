@@ -8,7 +8,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <limits.h>
-
+#include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -41,6 +41,7 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* Double linked list operations */
 char **_strtok(char *str, const char *delim);
 size_t print_dlistint(const stack_t *h);
 size_t dlistint_len(const stack_t *h);
@@ -52,11 +53,15 @@ int sum_dlistint(stack_t *head);
 stack_t *insert_dnodeint_at_index(stack_t **h, unsigned int idx, int n);
 int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 
+/* enabling functions */
+int arr_len(char **arr);
+void d_exit(stack_t **stack, const char *mesg, unsigned int line);
+
 /* entry function */
 int d_function(char **argv, stack_t **stack, unsigned int line);
 
 /* monty opcode */
-void _push(stack_t **stack, unsigned int line_number);
+void _push(stack_t **stack, unsigned int line_number, char **args);
 void _pop(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);

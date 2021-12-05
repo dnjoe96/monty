@@ -9,15 +9,19 @@ push 4
      pall  
      pop
      pall
-   pint
+   #pint
    pop
-   pint
+   #pint
 pall
    swap
    pall
    	nop
    add
+   pall
    sub
+   pall
    div
+   pall
    mul
-   # add
+   pall
+   add

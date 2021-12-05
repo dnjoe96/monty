@@ -22,10 +22,10 @@ char **_strtok(char *str, const char *delim)
 		return (NULL);
 
 	/*printf("Before strtok loop\n");*/
-	
+
 	if (tokens == NULL)
 		return (NULL);
-	
+
 	/*printf("=========>first token - %s\n", tokens);*/
 	while (tokens != NULL)
 	{

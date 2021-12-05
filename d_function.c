@@ -16,14 +16,19 @@ int arr_len(char **arr)
 	return (len);
 }
 
-int d_function(char **argv, stack_t **stack,
-		__attribute__((unused)) unsigned int line)
+/**
+ * d_function - The function that assigns opcodes to its various functions
+ *
+ * @argv: arguments
+ * @stack: pointer to head of list
+ * @line: Line number
+ * Return: Int
+ */
+int d_function(char **argv, stack_t **stack, unsigned int line)
 {
 	int i, n = 10;
-	unsigned int val;
 
 	instruction_t instruct[] = {
-		{"push", _push},
 		{"pop", _pop},
 		{"pint", _pint},
 		{"pall", _pall},
@@ -33,6 +38,7 @@ int d_function(char **argv, stack_t **stack,
 		{"sub", _sub},
 		{"mul", _mul},
 		{"div", _div},
+		{"mod", _mod},
 	};
 
 	/*printf("Line number = %u\n", line);*/
@@ -40,23 +46,17 @@ int d_function(char **argv, stack_t **stack,
 	{
 		if (strcmp(argv[0], instruct[i].opcode) == 0)
 		{
-
-			if (arr_len(argv) == 1)
-				val = 0;
-			else
-				val = (unsigned int) atoi(argv[1]);
 			/*printf("val = %u\n",val);*/
-			instruct[i].f(stack, val);
-			break;
+			instruct[i].f(stack, line);
+			return (0);
 		}
 
-		if (i == n - 1)
+		if (strcmp(argv[0], "push") == 0)
 		{
-			if (strcmp(argv[0], "#") == 0)
-			{
-				break;
-			}
+			_push(stack, line, argv);
+			return (0);
 		}
 	}
+	fprintf(stderr, "L%d: unknown instruction %s\n", line, argv[0]);
 	return (0);
 }
