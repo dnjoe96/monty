@@ -3,7 +3,7 @@ push 1 Push 1 onto the stack
 	
 push 2
 pint
-  push 
+  push       7
                   pall    
 	
 	

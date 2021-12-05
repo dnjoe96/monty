@@ -47,6 +47,7 @@ int d_function(char **argv, stack_t **stack, unsigned int line)
 		if (strcmp(argv[0], instruct[i].opcode) == 0)
 		{
 			/*printf("val = %u\n",val);*/
+			free(argv);
 			instruct[i].f(stack, line);
 			return (0);
 		}

@@ -46,11 +46,19 @@ void _push(stack_t **stack, unsigned int line_number, char **args)
 {
 	/*printf("Line %u - push %d on stack\n", line_number, atoi(args[1]));*/
 	if (arr_len(args) == 1)
+	{
+		free(args);
 		d_exit(stack, "usage: push integer", line_number);
+	}
+
 	if (check_num(args[1]) == -1)
+	{
+		free(args);
 		d_exit(stack, "usage: push integer", line_number);
+	}
 
 	add_dnodeint_end(stack, atoi(args[1]));
+	free(args);
 }
 
 /**

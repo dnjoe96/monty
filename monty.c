@@ -40,8 +40,15 @@ int main(int argc, char **argv)
 
 		arr = _strtok(line, " \t\n\b");
 
-		if (arr == NULL || arr[0][0] == '#')
+		
+		/*free(line);*/
+		if (arr == NULL)
 			continue;
+
+		if (arr[0][0] == '#')
+		{
+			continue;
+		}
 
 		d_function(arr, &stacklist, i);
 		/*printf("%s\n", arr[0]);*/
@@ -53,16 +60,14 @@ int main(int argc, char **argv)
 		}
 		printf("\n");
 		*/
-		free(arr);
+		/*free(arr);*/
 	}
 
 	if (stacklist)
 		free_dlistint(stacklist);
 
 	fclose(fp);
-
 	if (line)
 		free(line);
-
 	exit(EXIT_SUCCESS);
 }
