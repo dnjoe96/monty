@@ -239,6 +239,10 @@ void _div(stack_t **stack, unsigned int line_number)
 	
 	node1 = get_dnodeint_at_index(*stack, len - 1);
 	node2 = get_dnodeint_at_index(*stack, len - 2);
+	
+	if (node1->n == 0)
+		d_exit(stack, "division by zero", line_number);
+
 	ddiv = node2->n / node1->n;
 
 	delete_dnodeint_at_index(stack, len - 1);
@@ -263,10 +267,14 @@ void _mod(stack_t **stack, unsigned int line_number)
 	len = dlistint_len(*stack);
 
 	if (len < 2)
-		d_exit(stack, "can't div, stack too short", line_number);
+		d_exit(stack, "can't mod, stack too short", line_number);
 
 	node1 = get_dnodeint_at_index(*stack, len - 1);
 	node2 = get_dnodeint_at_index(*stack, len - 2);
+
+	if (node1->n == 0)
+		d_exit(stack, "division by zero", line_number);
+
 	dmod = node2->n % node1->n;
 	
 	delete_dnodeint_at_index(stack, len - 1);
