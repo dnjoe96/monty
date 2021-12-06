@@ -60,7 +60,7 @@ int d_function(char **argv, stack_t **stack, unsigned int line)
 		}
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", line, argv[0]);
-	free(stack);
+	free_dlistint(*stack);
 	free(argv);
 	exit(EXIT_FAILURE);
 	return (0);
