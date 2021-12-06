@@ -186,7 +186,7 @@ void _sub(stack_t **stack, unsigned int line_number)
 	node1 = get_dnodeint_at_index(*stack, len - 1);
 	node2 = get_dnodeint_at_index(*stack, len - 2);
 
-	diff = node1->n - node2->n;
+	diff = node2->n - node1->n;
 
 	delete_dnodeint_at_index(stack, len - 1);
 	delete_dnodeint_at_index(stack, len - 2);
