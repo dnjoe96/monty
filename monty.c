@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	size_t len = 0;
 	char **arr;
 	int i;
-	stack_t *stacklist;
+	stack_t *stacklist = NULL;
 
 	if (argc != 2)
 	{
@@ -30,8 +30,6 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	stacklist = NULL;
-
 	i = 0;
 
 	while (getline(&line, &len, fp) != -1)
@@ -40,8 +38,6 @@ int main(int argc, char **argv)
 
 		arr = _strtok(line, " \t\n\b");
 
-		
-		/*free(line);*/
 		if (arr == NULL)
 			continue;
 
@@ -52,16 +48,6 @@ int main(int argc, char **argv)
 		}
 
 		d_function(arr, &stacklist, i);
-		/*printf("%s\n", arr[0]);*/
-
-		/*
-		for (i = 0; arr[i] != NULL; i++)
-		{
-			printf("%d - %s, ", i, arr[i]);
-		}
-		printf("\n");
-		*/
-		/*free(arr);*/
 	}
 
 	if (stacklist)

@@ -72,7 +72,6 @@ void _pop(stack_t **stack, unsigned int line_number)
 {
 	size_t len;
 
-	/*printf("pop function\n");*/
 	len = dlistint_len(*stack);
 
 	if (len == 0)
@@ -90,9 +89,8 @@ void _pop(stack_t **stack, unsigned int line_number)
  */
 void _pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
-	/*printf("print all\n");*/
 	size_t len = dlistint_len(*stack);
-	
+
 	if (len != 0)
 		print_dlistint(*stack);
 }
@@ -110,7 +108,6 @@ void _swap(stack_t **stack, unsigned int line_number)
 	stack_t *node;
 	int val;
 
-	/*printf("swap top\n");*/
 	len = dlistint_len(*stack);
 
 	if (len < 2)
@@ -136,7 +133,6 @@ void _add(stack_t **stack, unsigned int line_number)
 	size_t len;
 	int sum;
 
-	/*printf("add\n");*/
 	len = dlistint_len(*stack);
 
 	if (len < 2)
@@ -177,7 +173,6 @@ void _sub(stack_t **stack, unsigned int line_number)
 	size_t len;
 	int diff;
 
-	/*printf("add\n");*/
 	len = dlistint_len(*stack);
 
 	if (len < 2)
@@ -206,7 +201,6 @@ void _mul(stack_t **stack, unsigned int line_number)
 	size_t len;
 	int prod;
 
-	/*printf("add\n");*/
 	len = dlistint_len(*stack);
 
 	if (len < 2)
@@ -234,15 +228,14 @@ void _div(stack_t **stack, unsigned int line_number)
 	size_t len;
 	int ddiv;
 
-	/*printf("add\n");*/
 	len = dlistint_len(*stack);
 
 	if (len < 2)
 		d_exit(stack, "can't div, stack too short", line_number);
-	
+
 	node1 = get_dnodeint_at_index(*stack, len - 1);
 	node2 = get_dnodeint_at_index(*stack, len - 2);
-	
+
 	if (node1->n == 0)
 		d_exit(stack, "division by zero", line_number);
 
@@ -266,7 +259,6 @@ void _mod(stack_t **stack, unsigned int line_number)
 	size_t len;
 	int dmod;
 
-	/*printf("add\n");*/
 	len = dlistint_len(*stack);
 
 	if (len < 2)
@@ -279,7 +271,7 @@ void _mod(stack_t **stack, unsigned int line_number)
 		d_exit(stack, "division by zero", line_number);
 
 	dmod = node2->n % node1->n;
-	
+
 	delete_dnodeint_at_index(stack, len - 1);
 	delete_dnodeint_at_index(stack, len - 2);
 	add_dnodeint_end(stack, dmod);
@@ -297,7 +289,6 @@ void _pint(stack_t **stack, unsigned int line_number)
 	size_t len;
 	stack_t *node;
 
-	/*printf("print top\n");*/
 	len = dlistint_len(*stack);
 
 	if (len == 0)
@@ -316,19 +307,18 @@ void _pint(stack_t **stack, unsigned int line_number)
  */
 void _pchar(stack_t **stack, unsigned int line_number)
 {
-        size_t len;
-        stack_t *node;
+	size_t len;
+	stack_t *node;
 
-        /*printf("print top\n");*/
-        len = dlistint_len(*stack);
+	len = dlistint_len(*stack);
 
-        if (len == 0)
-                d_exit(stack, "can't pchar, stack empty", line_number);
+	if (len == 0)
+		d_exit(stack, "can't pchar, stack empty", line_number);
 
-        node = get_dnodeint_at_index(*stack, len - 1);
+	node = get_dnodeint_at_index(*stack, len - 1);
 
 	if (node->n > 255 || node->n < 0)
 		d_exit(stack, "can't pchar, value out of range", line_number);
 
-        fprintf(stdout, "%c\n", node->n);
+	fprintf(stdout, "%c\n", node->n);
 }
