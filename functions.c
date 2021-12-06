@@ -91,7 +91,10 @@ void _pop(stack_t **stack, unsigned int line_number)
 void _pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	/*printf("print all\n");*/
-	print_dlistint(*stack);
+	size_t len = dlistint_len(*stack);
+	
+	if (len != 0)
+		print_dlistint(*stack);
 }
 
 /**
