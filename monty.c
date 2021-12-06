@@ -47,6 +47,7 @@ int main(int argc, char **argv)
 
 		if (arr[0][0] == '#')
 		{
+			free(arr);
 			continue;
 		}
 
